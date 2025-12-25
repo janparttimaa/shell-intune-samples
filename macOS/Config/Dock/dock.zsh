@@ -21,7 +21,7 @@
 appname="Dock"                                                                                  # The name of our script
 useDockUtil=true                                                                                # Variable of using of dockutil
 waitForApps=true                                                                                # Wait for all specified applications to be installed before configuring the Dock.
-abmcheck=false                                                                                  # Execute this script if this device is ABM managed
+abmcheck=true                                                                                   # Execute this script if this device is ABM managed
 dockutilpkg="https://github.com/kcrawford/dockutil/releases/download/3.1.3/dockutil-3.1.3.pkg"  # URL of dockutil installer
 logandmetadir="/Library/Logs/Microsoft/IntuneScripts/$appname"                                  # The location of our logs and last updated data
 log="$logandmetadir/$appname.log"                                                               # The location of the script log file
