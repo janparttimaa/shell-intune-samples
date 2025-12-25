@@ -248,7 +248,7 @@ if [ "$abmcheck" = true ]; then
   profiles status -type enrollment | grep "Enrolled via DEP: Yes"
   if [[ ! $? == 0 ]]; then
     echo "$(date) | This device is not ABM managed"
-    update_swift_dialog success "Dock configuration skipped" 2>/dev/null
+    update_swift_dialog success "Dock configuration skipped"
     exit 0;
   else
     echo "$(date) | Device is ABM Managed"
