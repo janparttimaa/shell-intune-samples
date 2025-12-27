@@ -248,7 +248,7 @@ if [ "$abmcheck" = true ]; then
   profiles status -type enrollment | grep "Enrolled via DEP: Yes"
   if [[ ! $? == 0 ]]; then
     echo "$(date) | This device is not ABM managed"
-    update_swift_dialog success "Dock configuration skipped"
+    update_swift_dialog success "Dock configuration skipped as planned"
     exit 0;
   else
     echo "$(date) | Device is ABM Managed"
@@ -258,7 +258,7 @@ fi
 # Check if apps are installed
 if [[ "$waitForApps" == true ]]; then
     echo "$(date) | Waiting for apps to be installed..."
-    wait_for_apps_installation 3600      # Wait 3600 seconds (1 hour) for apps to be installed
+    wait_for_apps_installation 7200     # Wait 7200 seconds (2 hours) for apps to be installed
 fi
 
 # if useDockUtil is true, use dockutil to configure the dock
