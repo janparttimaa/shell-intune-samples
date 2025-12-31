@@ -20,7 +20,6 @@
 # User Defined variables
 app="GlobalProtect.app"
 
-
 # Fixed Variables
 attribute="CFBundleShortVersionString"
 InfoPlistPath="/Applications/$app/Contents/Info.plist"
