@@ -144,7 +144,7 @@ configure_dock_with_dockutil () {
     done
 
     # Add Downloads Folder
-    run_as_user "${dockutil}" --add "${userHome}/Downloads" --section others --view fan --display stack --no-restart ${plist} > /dev/null 2>&1
+    run_as_user "${dockutil}" --add "${userHome}/Downloads" --section others --view fan --display stack --sort dateadded --no-restart ${plist} > /dev/null 2>&1
 
     killall -KILL Dock
     
