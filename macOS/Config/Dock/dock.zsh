@@ -19,7 +19,6 @@
 
 # Define variables
 appname="Dock"                                                                                  # The name of our script
-useDockUtil=true                                                                                # Variable of using of dockutil
 waitForApps=true                                                                                # Wait for all specified applications to be installed before configuring the Dock.
 abmcheck=true                                                                                   # Execute this script if this device is ABM managed
 dockutilpkg="https://github.com/kcrawford/dockutil/releases/download/3.1.3/dockutil-3.1.3.pkg"  # URL of dockutil installer
@@ -152,53 +151,6 @@ configure_dock_with_dockutil () {
     update_swift_dialog success "Configured dock..."
 }
 
-configure_dock_via_plist () {
-
-  # Update Swift Dialog
-  update_swift_dialog wait "Configuring dock..."
-
-  # Clearing Dock
-  echo "$(date) |  Removing Dock Persistent Apps"
-  #run_as_user defaults delete com.apple.dock
-  run_as_user defaults delete com.apple.dock persistent-apps
-  run_as_user defaults delete com.apple.dock persistent-others
-
-  echo "$(date) |  Adding Apps to Dock"
-  for i in "${dockapps[@]}"; do
-    if [[ -e "$i" ]] ; then
-      echo "$(date) |  Adding [$i] to Dock"
-      run_as_user defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$i</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-      update_swift_dialog wait "Adding $i to Dock"
-    fi
-  done
-
-  echo "$(date) | Adding Downloads Stack"
-  downloadfolder="${userHome}/Downloads"
-  run_as_user defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$downloadfolder</string><key>_CFURLStringType</key><integer>0</integer></dict><key>file-label</key><string>Downloads</string><key>file-type</key><string>2</string></dict><key>tile-type</key><string>directory-tile</string></dict>"
-
-  #echo "$(date) | Enabling Magnification"
-  #defaults write com.apple.dock magnification -boolean YES
-
-  #echo "$(date) | Enable Dim Hidden Apps in Dock"
-  #defaults write com.apple.dock showhidden -bool true
-
-  #echo "$(date) | Enable Auto Hide dock"
-  #defaults write com.apple.dock autohide -bool true
-
-  #echo "$(date) | Disable show recent items"
-  #defaults write com.apple.dock show-recents -bool FALSE
-
-  #echo "$(date) | Enable Minimise Icons into Dock Icons"
-  #defaults write com.apple.dock minimize-to-application -bool yes
-
-  echo "$(date) | Restarting Dock"
-  killall -KILL Dock
-
-  touch "/Users/$currentUser/Library/Preferences/.dockconfigured"
-  update_swift_dialog success "Configured dock..."
-
-}
-
 wait_for_apps_installation() {
     local timeout=$1
     local start_time=$(date +%s)
@@ -261,12 +213,7 @@ if [[ "$waitForApps" == true ]]; then
     wait_for_apps_installation 7200     # Wait 7200 seconds (2 hours) for apps to be installed
 fi
 
-# if useDockUtil is true, use dockutil to configure the dock
-if [[ "$useDockUtil" == true ]]; then
-    echo "$(date) | Configuring dock with dockutil"
-    install_dockutil_if_missing
-    configure_dock_with_dockutil
-else
-    echo "$(date) | Configuring dock with plist"
-    configure_dock_via_plist
-fi
+# Use dockutil to configure the dock
+echo "$(date) | Configuring dock with dockutil"
+install_dockutil_if_missing
+configure_dock_with_dockutil
