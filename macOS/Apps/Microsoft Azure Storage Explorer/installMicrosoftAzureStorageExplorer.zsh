@@ -3,13 +3,12 @@
 
 ############################################################################################
 ##
-## Script to install the latest Visual Studio Code
+## Script to install the latest Microsoft Azure Storage Explorer
 ##
 ## VER 1.0.1
 ##
 ## Change Log
 ##
-## 2022-12-15   - Changed to use Universal Binary
 ## 2026-01-11   - Set app ownership to console user (admin group) + read-only for group/everyone
 ## 2026-01-11   - Removed Octory references and converted to zsh
 ## 2026-01-11   - Fixed zsh download file detection (glob handling / newest file selection)
@@ -27,15 +26,15 @@
 ## Feedback: neiljohn@microsoft.com
 
 # Define variables
-weburl="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal"    # Download URL
-appname="Visual Studio Code"                                                            # App name for logging
-app="Visual Studio Code.app"                                                            # Installed app bundle name
-logandmetadir="/Library/Logs/Microsoft/IntuneScripts/installVSCode"                     # Logs + metadata
-processpath="/Applications/Visual Studio Code.app/Contents/MacOS/Electron"              # Process to check
-terminateprocess="false"                                                                # Terminate process if running?
-autoUpdate="true"                                                                       # If true, exit if already installed
-targetGroup="admin"                                                                     # Group ownership for installed application      
-installedAppPath="/Applications/$app"                                                   # Final install path
+weburl="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal"        # Download URL
+appname="Microsoft Azure Storage Explorer"                                                  # App name for logging
+app="Microsoft Azure Storage Explorer.app"                                                  # Installed app bundle name
+logandmetadir="/Library/Logs/Microsoft/IntuneScripts/installMicrosofAzureStorageExplorer"   # Logs + metadata
+processpath="/Applications/Microsoft Azure Storage Explorer.app/Contents/MacOS/Electron"    # Process to check
+terminateprocess="false"                                                                    # Terminate process if running?
+autoUpdate="true"                                                                           # If true, exit if already installed
+targetGroup="admin"                                                                         # Group ownership for installed application      
+installedAppPath="/Applications/$app"                                                       # Final install path
 
 # Generated variables
 tempdir="$(mktemp -d)"  

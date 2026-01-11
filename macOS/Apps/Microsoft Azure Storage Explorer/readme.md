@@ -9,7 +9,7 @@ This scripts intended usage scenario is to install Microsoft Azure Storage Explo
 ## Quick Run
 
 ```
-sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/microsoft/shell-intune-samples/master/macOS/Apps/Microsoft%20Azure%20Storage%20Explorer/installMicrosoftAzureStorageExplorer.sh)"
+sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/microsoft/shell-intune-samples/master/macOS/Apps/Microsoft%20Azure%20Storage%20Explorer/installMicrosoftAzureStorageExplorer.zsh)"
 ```
 
 ## Script Settings
