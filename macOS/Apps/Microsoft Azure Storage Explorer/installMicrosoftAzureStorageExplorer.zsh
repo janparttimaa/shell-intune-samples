@@ -26,7 +26,7 @@
 ## Feedback: neiljohn@microsoft.com
 
 # Define variables
-weburl="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal"        # Download URL
+weburl="https://aka.ms/storageexplorer/downloadmacosarm64"                                  # Download URL
 appname="Microsoft Azure Storage Explorer"                                                  # App name for logging
 app="Microsoft Azure Storage Explorer.app"                                                  # Installed app bundle name
 logandmetadir="/Library/Logs/Microsoft/IntuneScripts/installMicrosofAzureStorageExplorer"   # Logs + metadata
