@@ -25,33 +25,36 @@ The log file will output to ***/Library/Logs/Microsoft/IntuneScripts/installVSCo
 
 ```
 ##############################################################
-# Thu 15 Dec 2022 12:42:24 GMT | Logging install of [Visual Studio Code] to [/Library/Logs/Microsoft/IntuneScripts/installVSCode/Visual Studio Code.log]
-############################################################
+# Sun Jan 11 15:16:50 EET 2026 | Logging install of [Visual Studio Code] to [/Library/Logs/Microsoft/IntuneScripts/installVSCode/Visual Studio Code.log]
+##############################################################
 
-Thu 15 Dec 2022 12:42:24 GMT | Checking if we need Rosetta 2 or not
-Thu 15 Dec 2022 12:42:24 GMT | Waiting for other [/usr/sbin/softwareupdate] processes to end
-Thu 15 Dec 2022 12:42:24 GMT | No instances of [/usr/sbin/softwareupdate] found, safe to proceed
-Thu 15 Dec 2022 12:42:24 GMT | Rosetta is already installed and running. Nothing to do.
-Thu 15 Dec 2022 12:42:24 GMT | Checking if we need to install or update [Visual Studio Code]
-Thu 15 Dec 2022 12:42:24 GMT | [Visual Studio Code] not installed, need to download and install
-Thu 15 Dec 2022 12:42:24 GMT | Dock is here, lets carry on
-Thu 15 Dec 2022 12:42:24 GMT | Starting downlading of [Visual Studio Code]
-Thu 15 Dec 2022 12:42:24 GMT | Waiting for other [curl -f] processes to end
-Thu 15 Dec 2022 12:42:24 GMT | No instances of [curl -f] found, safe to proceed
-Thu 15 Dec 2022 12:42:24 GMT | Downloading Visual Studio Code
-Thu 15 Dec 2022 12:42:29 GMT | Downloaded [Visual Studio Code.app] to [/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.slVprIIK/VSCode-darwin-universal.zip]
-Thu 15 Dec 2022 12:42:29 GMT | Detected install type as [ZIP]
-Thu 15 Dec 2022 12:42:29 GMT | Waiting for other [/Applications/Visual Studio Code.app/Contents/MacOS/Electron] processes to end
-Thu 15 Dec 2022 12:42:29 GMT | No instances of [/Applications/Visual Studio Code.app/Contents/MacOS/Electron] found, safe to proceed
-Thu 15 Dec 2022 12:42:29 GMT | Installing Visual Studio Code
-Thu 15 Dec 2022 12:42:30 GMT | Changed current directory to /var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.slVprIIK
-Thu 15 Dec 2022 12:42:34 GMT | /var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.slVprIIK/VSCode-darwin-universal.zip unzipped
-Thu 15 Dec 2022 12:42:37 GMT | Visual Studio Code moved into /Applications
-Thu 15 Dec 2022 12:42:37 GMT | Fix up permissions
-Thu 15 Dec 2022 12:42:38 GMT | correctly applied permissions to Visual Studio Code
-Thu 15 Dec 2022 12:42:38 GMT | Visual Studio Code Installed
-Thu 15 Dec 2022 12:42:38 GMT | Cleaning Up
-Thu 15 Dec 2022 12:42:38 GMT | Writing last modifieddate [Wed, 14 Dec 2022 11:35:16 GMT] to [/Library/Logs/Microsoft/IntuneScripts/installVSCode/Visual Studio Code.meta]
-Thu 15 Dec 2022 12:42:38 GMT | Fixing up permissions
-Thu 15 Dec 2022 12:42:38 GMT | Application [Visual Studio Code] succesfully installed
+Sun Jan 11 15:16:50 EET 2026 | Checking if we need Rosetta 2 or not
+Sun Jan 11 15:16:50 EET 2026 | Waiting for other [/usr/sbin/softwareupdate] processes to end
+Sun Jan 11 15:16:50 EET 2026 | No instances of [/usr/sbin/softwareupdate] found, safe to proceed
+Sun Jan 11 15:16:50 EET 2026 | Rosetta is already installed and running. Nothing to do.
+Sun Jan 11 15:16:50 EET 2026 | Checking if we need to install or update [Visual Studio Code]
+Sun Jan 11 15:16:50 EET 2026 | [Visual Studio Code] not installed, need to download and install
+Sun Jan 11 15:16:50 EET 2026 | Dock is here, lets carry on
+Sun Jan 11 15:16:50 EET 2026 | Starting downloading of [Visual Studio Code]
+Sun Jan 11 15:16:50 EET 2026 | Waiting for other [curl -f] processes to end
+Sun Jan 11 15:16:50 EET 2026 | No instances of [curl -f] found, safe to proceed
+Sun Jan 11 15:16:50 EET 2026 | Downloading Visual Studio Code
+Sun Jan 11 15:17:06 EET 2026 | Downloaded file detected as [/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.Iml5KaI0HF/VSCode-darwin-universal.zip]
+Sun Jan 11 15:17:06 EET 2026 | Detected install type as [ZIP]
+Sun Jan 11 15:17:06 EET 2026 | Using installer file [/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.Iml5KaI0HF/VSCode-darwin-universal.zip]
+Sun Jan 11 15:17:06 EET 2026 | Waiting for other [/Applications/Visual Studio Code.app/Contents/MacOS/Electron] processes to end
+Sun Jan 11 15:17:06 EET 2026 | No instances of [/Applications/Visual Studio Code.app/Contents/MacOS/Electron] found, safe to proceed
+Sun Jan 11 15:17:06 EET 2026 | Installing Visual Studio Code
+Sun Jan 11 15:17:06 EET 2026 | Changed current directory to /var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.Iml5KaI0HF
+Sun Jan 11 15:17:13 EET 2026 | /var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.Iml5KaI0HF/VSCode-darwin-universal.zip unzipped
+Sun Jan 11 15:17:21 EET 2026 | Visual Studio Code moved into /Applications
+Sun Jan 11 15:17:21 EET 2026 | Determining logged-in user for ownership
+Sun Jan 11 15:17:21 EET 2026 | Setting ownership of [/Applications/Visual Studio Code.app] to [johndoe:staff]
+Sun Jan 11 15:17:22 EET 2026 | Ownership and permissions successfully applied
+drwxr-xr-x  3 johndoe  staff  96 Jan  8 16:16 /Applications/Visual Studio Code.app
+Sun Jan 11 15:17:22 EET 2026 | Visual Studio Code Installed
+Sun Jan 11 15:17:22 EET 2026 | Cleaning Up
+Sun Jan 11 15:17:23 EET 2026 | Writing last modifieddate [Thu, 08 Jan 2026 14:49:20 GMT] to [/Library/Logs/Microsoft/IntuneScripts/installVSCode/Visual Studio Code.meta]
+Sun Jan 11 15:17:23 EET 2026 | Application [Visual Studio Code] successfully installed
+
 ```
