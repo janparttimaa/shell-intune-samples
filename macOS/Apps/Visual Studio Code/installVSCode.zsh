@@ -34,7 +34,7 @@ logandmetadir="/Library/Logs/Microsoft/IntuneScripts/installVSCode"             
 processpath="/Applications/Visual Studio Code.app/Contents/MacOS/Electron"              # Process to check
 terminateprocess="false"                                                                # Terminate process if running?
 autoUpdate="true"                                                                       # If true, exit if already installed
-targetGroup="staff"                                                                     # Group ownership for installed application      
+targetGroup="admin"                                                                     # Group ownership for installed application      
 installedAppPath="/Applications/$app"                                                   # Final install path
 
 # Generated variables
