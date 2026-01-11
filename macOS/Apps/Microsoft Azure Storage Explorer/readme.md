@@ -25,33 +25,35 @@ The log file will output to ***/Library/Logs/Microsoft/IntuneScripts/installMicr
 
 ```
 ##############################################################
-# Thu 15 Dec 2022 12:42:24 GMT | Logging install of [Microsoft Azure Storage Explorer] to [/Library/Logs/Microsoft/IntuneScripts/installVSCode/Microsoft Azure Storage Explorer.log]
-############################################################
+# Sun Jan 11 15:48:08 EET 2026 | Logging install of [Microsoft Azure Storage Explorer] to [/Library/Logs/Microsoft/IntuneScripts/installMicrosofAzureStorageExplorer/Microsoft Azure Storage Explorer.log]
+##############################################################
 
-Thu 15 Dec 2022 12:42:24 GMT | Checking if we need Rosetta 2 or not
-Thu 15 Dec 2022 12:42:24 GMT | Waiting for other [/usr/sbin/softwareupdate] processes to end
-Thu 15 Dec 2022 12:42:24 GMT | No instances of [/usr/sbin/softwareupdate] found, safe to proceed
-Thu 15 Dec 2022 12:42:24 GMT | Rosetta is already installed and running. Nothing to do.
-Thu 15 Dec 2022 12:42:24 GMT | Checking if we need to install or update [Microsoft Azure Storage Explorer]
-Thu 15 Dec 2022 12:42:24 GMT | [Microsoft Azure Storage Explorer] not installed, need to download and install
-Thu 15 Dec 2022 12:42:24 GMT | Dock is here, lets carry on
-Thu 15 Dec 2022 12:42:24 GMT | Starting downlading of [Microsoft Azure Storage Explorer]
-Thu 15 Dec 2022 12:42:24 GMT | Waiting for other [curl -f] processes to end
-Thu 15 Dec 2022 12:42:24 GMT | No instances of [curl -f] found, safe to proceed
-Thu 15 Dec 2022 12:42:24 GMT | Downloading Microsoft Azure Storage Explorer
-Thu 15 Dec 2022 12:42:29 GMT | Downloaded [Microsoft Azure Storage Explorer.app] to [/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.slVprIIK/VSCode-darwin-universal.zip]
-Thu 15 Dec 2022 12:42:29 GMT | Detected install type as [ZIP]
-Thu 15 Dec 2022 12:42:29 GMT | Waiting for other [/Applications/Microsoft Azure Storage Explorer.app/Contents/MacOS/Electron] processes to end
-Thu 15 Dec 2022 12:42:29 GMT | No instances of [/Applications/Microsoft Azure Storage Explorer.app/Contents/MacOS/Electron] found, safe to proceed
-Thu 15 Dec 2022 12:42:29 GMT | Installing Microsoft Azure Storage Explorer
-Thu 15 Dec 2022 12:42:30 GMT | Changed current directory to /var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.slVprIIK
-Thu 15 Dec 2022 12:42:34 GMT | /var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.slVprIIK/VSCode-darwin-universal.zip unzipped
-Thu 15 Dec 2022 12:42:37 GMT | Microsoft Azure Storage Explorer moved into /Applications
-Thu 15 Dec 2022 12:42:37 GMT | Fix up permissions
-Thu 15 Dec 2022 12:42:38 GMT | correctly applied permissions to Microsoft Azure Storage Explorer
-Thu 15 Dec 2022 12:42:38 GMT | Microsoft Azure Storage Explorer Installed
-Thu 15 Dec 2022 12:42:38 GMT | Cleaning Up
-Thu 15 Dec 2022 12:42:38 GMT | Writing last modifieddate [Wed, 14 Dec 2022 11:35:16 GMT] to [/Library/Logs/Microsoft/IntuneScripts/installVSCode/Microsoft Azure Storage Explorer.meta]
-Thu 15 Dec 2022 12:42:38 GMT | Fixing up permissions
-Thu 15 Dec 2022 12:42:38 GMT | Application [Microsoft Azure Storage Explorer] succesfully installed
+Sun Jan 11 15:48:08 EET 2026 | Checking if we need Rosetta 2 or not
+Sun Jan 11 15:48:08 EET 2026 | Waiting for other [/usr/sbin/softwareupdate] processes to end
+Sun Jan 11 15:48:08 EET 2026 | No instances of [/usr/sbin/softwareupdate] found, safe to proceed
+Sun Jan 11 15:48:08 EET 2026 | Rosetta is already installed and running. Nothing to do.
+Sun Jan 11 15:48:08 EET 2026 | Checking if we need to install or update [Microsoft Azure Storage Explorer]
+Sun Jan 11 15:48:08 EET 2026 | [Microsoft Azure Storage Explorer] not installed, need to download and install
+Sun Jan 11 15:48:08 EET 2026 | Dock is here, lets carry on
+Sun Jan 11 15:48:08 EET 2026 | Starting downloading of [Microsoft Azure Storage Explorer]
+Sun Jan 11 15:48:08 EET 2026 | Waiting for other [curl -f] processes to end
+Sun Jan 11 15:48:08 EET 2026 | No instances of [curl -f] found, safe to proceed
+Sun Jan 11 15:48:08 EET 2026 | Downloading Microsoft Azure Storage Explorer
+Sun Jan 11 15:48:22 EET 2026 | Downloaded file detected as [/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.njn5QBnliG/StorageExplorer-darwin-arm64.zip]
+Sun Jan 11 15:48:22 EET 2026 | Detected install type as [ZIP]
+Sun Jan 11 15:48:22 EET 2026 | Using installer file [/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.njn5QBnliG/StorageExplorer-darwin-arm64.zip]
+Sun Jan 11 15:48:22 EET 2026 | Waiting for other [/Applications/Microsoft Azure Storage Explorer.app/Contents/MacOS/Electron] processes to end
+Sun Jan 11 15:48:22 EET 2026 | No instances of [/Applications/Microsoft Azure Storage Explorer.app/Contents/MacOS/Electron] found, safe to proceed
+Sun Jan 11 15:48:22 EET 2026 | Installing Microsoft Azure Storage Explorer
+Sun Jan 11 15:48:22 EET 2026 | Changed current directory to /var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.njn5QBnliG
+Sun Jan 11 15:48:28 EET 2026 | /var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/T/tmp.njn5QBnliG/StorageExplorer-darwin-arm64.zip unzipped
+Sun Jan 11 15:48:35 EET 2026 | Microsoft Azure Storage Explorer moved into /Applications
+Sun Jan 11 15:48:36 EET 2026 | Determining logged-in user for ownership
+Sun Jan 11 15:48:36 EET 2026 | Setting ownership of [/Applications/Microsoft Azure Storage Explorer.app] to [johndoe:admin]
+Sun Jan 11 15:48:37 EET 2026 | Ownership and permissions successfully applied
+drwxr-xr-x  3 johndoe  admin  96 Nov  1 02:22 /Applications/Microsoft Azure Storage Explorer.app
+Sun Jan 11 15:48:37 EET 2026 | Microsoft Azure Storage Explorer Installed
+Sun Jan 11 15:48:37 EET 2026 | Cleaning Up
+Sun Jan 11 15:48:37 EET 2026 | Writing last modifieddate [Tue, 04 Nov 2025 01:08:44 GMT] to [/Library/Logs/Microsoft/IntuneScripts/installMicrosofAzureStorageExplorer/Microsoft Azure Storage Explorer.meta]
+Sun Jan 11 15:48:37 EET 2026 | Application [Microsoft Azure Storage Explorer] successfully installed
 ```
