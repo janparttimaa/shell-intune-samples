@@ -72,7 +72,7 @@ We use this workaround [payloadless package](/macOS/Apps/Payloadless/) and deplo
 ### Deployment Process:
 Use unmanaged macOS PKG app deployment: [More information](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg)
 
-Here are the detailed details (see below). After setting up those, just deploy application to be available either all users/devices or selected users using security group.
+Here are the detailed details (see below). After setting those up, just deploy application to be available either all users/devices or selected users using security group.
 
 #### App information
 | Setting | Value | Notes |
