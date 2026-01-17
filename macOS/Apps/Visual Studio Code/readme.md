@@ -60,4 +60,5 @@ Sat Jan 17 15:36:47 EET 2026 | Visual Studio Code Installed
 Sat Jan 17 15:36:47 EET 2026 | Cleaning Up
 Sat Jan 17 15:36:47 EET 2026 | Writing last modifieddate [Wed, 14 Jan 2026 15:56:43 GMT] to [/Library/Logs/Microsoft/IntuneScripts/installVSCode/Visual Studio Code.meta]
 Sat Jan 17 15:36:47 EET 2026 | Application [Visual Studio Code] successfully installed
+
 ```
