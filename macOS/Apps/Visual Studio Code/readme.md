@@ -86,7 +86,7 @@ Here are the detailed details:
 | Privacy URL | ```https://go.microsoft.com/fwlink/?LinkId=521839``` ||
 | Developer | ```Microsoft Corporation``` ||
 | Notes | ```Deploys only Universal Binary-installer.``` ||
-| Logo | ***Logo of the application*** | [Download icon here](Visual%20Studio%20Code.png) and upload that.|
+| Logo | **Logo of the application* | [Download icon here](Visual%20Studio%20Code.png) and upload that.|
 
 #### Program
 **Post-install script:**
