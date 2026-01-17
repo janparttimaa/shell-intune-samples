@@ -9,9 +9,9 @@
 ##
 ## Change Log
 ##
-## 2026-01-11   - Set app ownership to console user (admin group) + read-only for group/everyone
-## 2026-01-11   - Removed Octory references and converted to zsh
-## 2026-01-11   - Fixed zsh download file detection (glob handling / newest file selection)
+## 2026-01-11: Migrated script to zsh; removed Octory references
+## 2026-01-11: Improved download artifact detection (zsh nullglob + newest-file selection)
+## 2026-01-11: Set installed app ownership to console user:admin; permissions owner RW, group/others R (no write)
 ##
 ############################################################################################
 
