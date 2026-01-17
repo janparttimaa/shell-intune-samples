@@ -8,7 +8,7 @@ b.) [Deploy app to Company Portal to be available](#b-deploy-app-to-company-port
 This script is an example to show how to use [Intune Shell Scripting](https://docs.microsoft.com/en-us/mem/intune/apps/macos-shell-scripts) to install applications. In this case the script will download Microsoft Visual Studio Code and then install it onto the Mac.
 
 ### Scenario
-This scripts intended usage scenario is to install Visual Studio Code via the Intune Scripting Agent.
+This scripts intended usage scenario is to install Visual Studio Code via the Intune Scripting Agent. Visual Studio Code will be installed as required app.
 
 ### Quick Run
 ```
