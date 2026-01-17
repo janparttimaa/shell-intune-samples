@@ -1,8 +1,8 @@
 # Visual Studio Code
 This page provides you following options for deployment:
 
-a.) Deploy app using Installation Script<br>
-b.) Deploy app to Company Portal to be available
+a.) [Deploy app using Installation Script](#a-deploy-app-using-installation-script)<br>
+b.) [Deploy app to Company Portal to be available](##b-deploy-app-to-company-portal-to-be-available)
 
 ## a.) Deploy app using Installation Script
 This script is an example to show how to use [Intune Shell Scripting](https://docs.microsoft.com/en-us/mem/intune/apps/macos-shell-scripts) to install applications. In this case the script will download Microsoft Visual Studio Code and then install it onto the Mac.
