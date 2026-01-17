@@ -65,7 +65,19 @@ Sat Jan 17 15:36:47 EET 2026 | Application [Visual Studio Code] successfully ins
 ```
 
 ## b.) Deploy app to Company Portal to be available
-As Visual Studio Code installer is not yet available as official PKG-installer (Issue ticket: microsoft/vscode#179556), we provide you workaround how to deploy Visual Studio Code to Company Portal to be available for those users, that needs it.
+As Visual Studio Code installer is not yet available as official PKG-installer (Issue ticket: microsoft/vscode#179556), we provide you workaround how to deploy Visual Studio Code to Company Portal to be available for those users, that needs it. This workaround will always install latest version of Visual Studio Code from Company Portal.
+
+We use this workaround [payloadless package](/macOS/Apps/Payloadless/) and deployment script. To make your deployment little bit easier, we have pre-created payloadless package already, that you can use.
+
+### Deployment Process:
+Use unmanaged macOS PKG app deployment: [More information](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg)
+
+Here are the detailed details:
+| Setting | Value | Notes |
+| -------- | ------- | ------- |
+| Select file to update | ```VSCode.pkg``` | [Download the pkg file here](VSCode.pkg) and upload that. |
+| Name | ```Visual Studio Code``` ||
+| Description | ```Visual Studio Code is a lightweight, powerful source code editor for macOS. It supports multiple programming languages, built-in Git integration, debugging, extensions, and customizable development workflows for modern application development. Note: This application deploys latest version of Visual Studio Code.``` ||
 
 ### Log File
 The log file will output to ***/Library/Logs/Microsoft/IntuneScripts/installVSCode/Visual Studio Code.log*** by default. Exit status is either 0 or 1. To gather this log with Intune remotely take a look at  [Troubleshoot macOS shell script policies using log collection](https://docs.microsoft.com/en-us/mem/intune/apps/macos-shell-scripts#troubleshoot-macos-shell-script-policies-using-log-collection)
