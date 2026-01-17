@@ -89,20 +89,20 @@ Here are the detailed details:
 | Logo | ***Logo of the application*** ||
 
 #### Program
-- Post-install script:
+**Post-install script:**
 ```
 #!/bin/zsh
 /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/microsoft/shell-intune-samples/refs/heads/master/macOS/Apps/Visual%20Studio%20Code/installVSCode.zsh)"
 ```
 
 #### Requirements
-- For minimum operating system, select latest version, that is available on the drop-down menu.
+For minimum operating system, select latest version, that is available on the drop-down menu.
 
 #### Detection rules
-- Ignore app version: Yes
-- Included apps:
-| App bundle ID (CFBundleIdentifier)
-| App version (CFBundleShortVersionString) |
+**Ignore app version:** Yes
+
+**Included apps:**
+| App bundle ID (CFBundleIdentifier)| App version (CFBundleShortVersionString) |
 | -------- | ------- |
 | ```com.microsoft.VSCode``` | ```1.0``` |
 
