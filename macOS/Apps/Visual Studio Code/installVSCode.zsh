@@ -9,10 +9,10 @@
 ##
 ## Change Log
 ##
-## 2022-12-15   - Updated download to use VS Code Universal build (darwin-universal)
-## 2026-01-11   - Migrated script to zsh; removed Octory references
-## 2026-01-11   - Improved download artifact detection (zsh nullglob + newest-file selection)
-## 2026-01-11   - Set installed app ownership to console user:admin; permissions owner RW, group/others R (no write)
+## 2022-12-15: Updated download to use VS Code Universal build (darwin-universal)
+## 2026-01-11: Migrated script to zsh; removed Octory references
+## 2026-01-11: Improved download artifact detection (zsh nullglob + newest-file selection)
+## 2026-01-11: Set installed app ownership to console user:admin; permissions owner RW, group/others R (no write)
 ##
 ############################################################################################
 
