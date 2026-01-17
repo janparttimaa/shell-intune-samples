@@ -73,11 +73,38 @@ We use this workaround [payloadless package](/macOS/Apps/Payloadless/) and deplo
 Use unmanaged macOS PKG app deployment: [More information](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg)
 
 Here are the detailed details:
+
+#### App information
 | Setting | Value | Notes |
 | -------- | ------- | ------- |
 | Select file to update | ```VSCode.pkg``` | [Download the pkg file here](VSCode.pkg) and upload that. |
 | Name | ```Visual Studio Code``` ||
-| Description | ```Visual Studio Code is a lightweight, powerful source code editor for macOS. It supports multiple programming languages, built-in Git integration, debugging, extensions, and customizable development workflows for modern application development. Note: This application deploys latest version of Visual Studio Code.``` ||
+| Description | ```Visual Studio Code is a lightweight, powerful source code editor for macOS. It supports multiple programming languages, built-in Git integration, debugging, extensions, and customizable development workflows for modern application development. Note: This application always deploys latest version of Visual Studio Code.``` ||
+| Publisher | ```Microsoft Corporation``` ||
+| Category | ```Development & Design``` ||
+| Information URL | ```https://code.visualstudio.com/docs``` ||
+| Privacy URL | ```https://go.microsoft.com/fwlink/?LinkId=521839``` ||
+| Developer | ```Microsoft Corporation``` ||
+| Notes | ```Deploys only Universal Binary-installer.``` ||
+| Logo | ***Logo of the application*** ||
+
+#### Program
+- Post-install script:
+```
+#!/bin/zsh
+/bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/microsoft/shell-intune-samples/refs/heads/master/macOS/Apps/Visual%20Studio%20Code/installVSCode.zsh)"
+```
+
+#### Requirements
+- For minimum operating system, select latest version, that is available on the drop-down menu.
+
+#### Detection rules
+- Ignore app version: Yes
+- Included apps:
+| App bundle ID (CFBundleIdentifier)
+| App version (CFBundleShortVersionString) |
+| -------- | ------- |
+| ```com.microsoft.VSCode``` | ```1.0``` |
 
 ### Log File
 The log file will output to ***/Library/Logs/Microsoft/IntuneScripts/installVSCode/Visual Studio Code.log*** by default. Exit status is either 0 or 1. To gather this log with Intune remotely take a look at  [Troubleshoot macOS shell script policies using log collection](https://docs.microsoft.com/en-us/mem/intune/apps/macos-shell-scripts#troubleshoot-macos-shell-script-policies-using-log-collection)
