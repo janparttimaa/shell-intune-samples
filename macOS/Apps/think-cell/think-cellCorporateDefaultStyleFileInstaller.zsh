@@ -28,10 +28,8 @@ log="$logandmetadir/$appname.log"                                               
 
 # Check if the log directory has been created
 if [ -d "$logandmetadir" ]; then
-    # Already created
     echo "$(date) | Log directory already exists - $logandmetadir"
 else
-    # Creating Metadirectory
     echo "$(date) | creating log directory - $logandmetadir"
     mkdir -p "$logandmetadir"
 fi
@@ -41,26 +39,26 @@ exec &> >(tee -a "$log")
 
 # Check if think-cell is already installed
 CheckIfThinkcellIsInstalled() {
-if [ -d "$thinkcellinstallationpath" ]; then
-    echo "$(date) | think-cell is installed. Let's proceed..."
-else
-    echo "$(date) | think-cell is not installed. No need to install corporate default style file. Closing the script..."
-    exit 0
-fi
+    if [ -d "$thinkcellinstallationpath" ]; then
+        echo "$(date) | think-cell is installed. Let's proceed..."
+    else
+        echo "$(date) | think-cell is not installed. No need to install corporate default style file. Closing the script..."
+        exit 0
+    fi
 }
 
 # Verify that corporate default file is installed successfully
 VerifyFile() {
-if [ -f "$filepath" ]; then
-    echo "$(date) | Corporate default style file to think-cell has been installed sucessfully. Closing script..."
-    exit 0
-else
-    echo "$(date) | ERROR: Corporate default style file to think-cell has not be installed. Please contact to System Administrator in order to investigate the issue. Closing script..."
-    exit 1
-fi
+    if [ -f "$filepath" ]; then
+        echo "$(date) | Corporate default style file to think-cell has been installed sucessfully. Closing script..."
+        exit 0
+    else
+        echo "$(date) | ERROR: Corporate default style file to think-cell has not be installed. Please contact to System Administrator in order to investigate the issue. Closing script..."
+        exit 1
+    fi
 }
 
-# NEW: Get remote Last-Modified header as epoch seconds (empty if not available/parsable)
+# Get remote Last-Modified header as epoch seconds (empty if not available/parsable)
 GetRemoteLastModifiedEpoch() {
     local last_modified remote_epoch
 
@@ -78,10 +76,25 @@ GetRemoteLastModifiedEpoch() {
     echo "$remote_epoch"
 }
 
+# NEW: stamp local file mtime to match remote Last-Modified (so compare works next run)
+StampLocalMtimeToRemote() {
+    local remote_epoch touch_ts
+    remote_epoch=$(GetRemoteLastModifiedEpoch)
+
+    if [ -n "$remote_epoch" ]; then
+        # touch -t format: [[CC]YY]MMDDhhmm[.SS]
+        touch_ts=$(date -r "$remote_epoch" "+%Y%m%d%H%M.%S" 2>/dev/null)
+        if [ -n "$touch_ts" ]; then
+            touch -t "$touch_ts" "$filepath" 2>/dev/null
+            echo "$(date) | Stamped local mtime to remote Last-Modified ($remote_epoch)"
+        fi
+    fi
+}
+
 # Check if corporate default style file is already installed
 CheckIfCorporateDefaultSyleFileIsInstalled() {
 
-    # Ensure target folder exists (needed for both install/update paths)
+    # Ensure target folder exists
     if [ -d "$folderpath" ]; then
         echo "$(date) | Styles folder already exists - $folderpath"
     else
@@ -96,16 +109,18 @@ CheckIfCorporateDefaultSyleFileIsInstalled() {
         local_epoch=$(stat -f "%m" "$filepath" 2>/dev/null)
         remote_epoch=$(GetRemoteLastModifiedEpoch)
 
-        # If we cannot compare reliably, treat as "not the same" and replace to ensure latest
+        # If we cannot compare reliably, replace to ensure latest
         if [ -z "$local_epoch" ] || [ -z "$remote_epoch" ]; then
             echo "$(date) | WARNING: Could not reliably compare modified times (local: '$local_epoch', remote: '$remote_epoch'). Replacing file to ensure latest..."
             curl -L -f -o "$filepath" "$weburl"
+            StampLocalMtimeToRemote
             VerifyFile
         fi
 
         if [ "$local_epoch" -ne "$remote_epoch" ]; then
             echo "$(date) | File is outdated (local mtime: $local_epoch, remote: $remote_epoch). Replacing with newest..."
             curl -L -f -o "$filepath" "$weburl"
+            StampLocalMtimeToRemote
             VerifyFile
         else
             echo "$(date) | Corporate default style file is up to date. No action needed. Closing script..."
@@ -114,6 +129,7 @@ CheckIfCorporateDefaultSyleFileIsInstalled() {
     else
         echo "$(date) | Corporate default style file to think-cell has not be installed. Let's proceed..."
         curl -L -f -o "$filepath" "$weburl"
+        StampLocalMtimeToRemote
         VerifyFile
     fi
 }
