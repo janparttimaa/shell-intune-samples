@@ -24,7 +24,6 @@ ini="$configdir/$default_ini_name"                                      # Update
 logandmetadir="$HOME/Library/Logs/Microsoft/IntuneScripts/$appname"     # The location of our logs and last updated data
 log="$logandmetadir/$appname.log"                                       # The location of the script log file
 
-
 # ============================================================
 # KeePassXC managed settings
 # ============================================================
@@ -103,7 +102,6 @@ typeset -a SSHAGENT_SETTINGS=(
 # [Security]
 # Empty array = unmanaged section.
 typeset -a SECURITY_SETTINGS=(
-    'IconDownloadFallback=true'
 )
 
 # Create log directory if it doesn't exist
