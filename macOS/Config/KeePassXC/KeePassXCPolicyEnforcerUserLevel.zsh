@@ -36,28 +36,33 @@ log="$logandmetadir/$appname.log"                                       # The lo
 # 2. To enforce an empty value, leave everything after "=" empty:
 #        'CustomProxyLocation='
 #
-# 3. Leave a section array empty to make that section unmanaged:
+# 3. To remove an existing setting from the INI section, prefix the key with "!":
+#        '!Language'
+#    This removes the complete Language=... line if it exists.
+#
+# 4. Leave a section array empty to make that section unmanaged:
 #        typeset -a SSHAGENT_SETTINGS=(
 #        )
 #    An unmanaged section is left unchanged and the script reports [SKIP].
 #
-# 4. Only keys listed below are enforced. Other existing keys in the same
-#    INI section are preserved and are not removed or changed.
+# 5. Only keys explicitly listed as Key=Value or !Key are managed. Other
+#    existing keys in the same INI section are preserved and are not changed.
 #
-# 5. If a listed key does not exist, it is added. If it exists with a
+# 6. If a listed Key=Value does not exist, it is added. If it exists with a
 #    different value, it is updated. If it is already correct, [OK] is logged.
+#    If !Key is listed, all active occurrences of that exact key are removed.
 #
-# 6. Values may contain additional "=" characters. The first "=" separates
+# 7. Values may contain additional "=" characters. The first "=" separates
 #    the key from the value.
 #
-# 7. Prefer single quotes around each Key=Value entry. This keeps characters
+# 8. Prefer single quotes around each policy entry. This keeps characters
 #    such as $, \\, double quotes, and braces literal in the policy definition.
 #
-# 8. The existing KeePassXC INI filename is preserved exactly, including its
+# 9. The existing KeePassXC INI filename is preserved exactly, including its
 #    capitalization (for example, KeepassXC.ini stays KeepassXC.ini). If no
 #    matching file exists, the script creates the default name KeePassXC.ini.
 #
-# 9. The script normalizes section spacing so there is exactly one blank line
+# 10. The script normalizes section spacing so there is exactly one blank line
 #    between INI sections. No extra blank line is added after the final section.
 #
 # IMPORTANT: Do not place generated secrets/private keys in this script.
@@ -213,6 +218,78 @@ ini_key_exists() {
 
         END { exit(found ? 0 : 1) }
     ' "$ini"
+}
+
+# Atomically remove one exact key from one exact INI section.
+# All active occurrences of the key are removed; comments and other settings are preserved.
+delete_ini_key() {
+    local section="$1"
+    local key="$2"
+    local tmp
+
+    if ! ini_key_exists "$section" "$key"; then
+        echo "$(/bin/date) | [OK] [$section] $key is already absent"
+        return 0
+    fi
+
+    echo "$(/bin/date) | [REMOVE] [$section] $key"
+
+    tmp="$(/usr/bin/mktemp "${ini}.tmp.XXXXXX")" || {
+        echo "$(/bin/date) | [ERROR] Could not create temporary file for $ini"
+        return 1
+    }
+
+    /usr/bin/awk -v target_section="$section" -v target_key="$key" '
+        function trim(s) {
+            sub(/^[[:space:]]+/, "", s)
+            sub(/[[:space:]]+$/, "", s)
+            return s
+        }
+
+        /^[[:space:]]*\[[^]]+\][[:space:]]*$/ {
+            current = $0
+            sub(/^[[:space:]]*\[/, "", current)
+            sub(/\][[:space:]]*$/, "", current)
+            in_section = (current == target_section)
+            print
+            next
+        }
+
+        in_section {
+            line = $0
+            stripped = line
+            sub(/^[[:space:]]+/, "", stripped)
+
+            if (stripped !~ /^[#;]/ && index(line, "=") > 0) {
+                lhs = substr(line, 1, index(line, "=") - 1)
+                lhs = trim(lhs)
+
+                if (lhs == target_key) {
+                    next
+                }
+            }
+        }
+
+        { print }
+    ' "$ini" > "$tmp"
+
+    if [[ $? -ne 0 ]]; then
+        echo "$(/bin/date) | [ERROR] Failed to remove [$section] $key"
+        /bin/rm -f "$tmp"
+        return 1
+    fi
+
+    /bin/chmod 644 "$tmp" || {
+        echo "$(/bin/date) | [ERROR] Failed to set permissions 644 on temporary file"
+        /bin/rm -f "$tmp"
+        return 1
+    }
+
+    /bin/mv -f "$tmp" "$ini" || {
+        echo "$(/bin/date) | [ERROR] Failed to replace $ini"
+        /bin/rm -f "$tmp"
+        return 1
+    }
 }
 
 # Atomically set one INI value while preserving other sections, keys, comments, and KeeShare data
@@ -434,7 +511,7 @@ normalize_ini_section_spacing() {
     echo "$(/bin/date) | [OK] INI section spacing normalized"
 }
 
-# Apply all configured Key=Value settings for one INI section.
+# Apply all configured Key=Value and !Key directives for one INI section.
 # If the settings array is empty, the section is reported as unmanaged.
 apply_ini_section() {
     local section="$1"
@@ -451,8 +528,26 @@ apply_ini_section() {
     fi
 
     for setting in "${settings[@]}"; do
+        # !Key means explicitly remove that exact key from this section.
+        if [[ "$setting" == '!'* ]]; then
+            if [[ "$setting" == *=* ]]; then
+                echo "$(/bin/date) | [ERROR] [$section] Invalid delete entry '$setting' (expected !Key with no '=')"
+                return 1
+            fi
+
+            key="${setting#!}"
+
+            if [[ -z "$key" ]]; then
+                echo "$(/bin/date) | [ERROR] [$section] Invalid delete entry '$setting' (key is empty)"
+                return 1
+            fi
+
+            delete_ini_key "$section" "$key" || return 1
+            continue
+        fi
+
         if [[ "$setting" != *=* ]]; then
-            echo "$(/bin/date) | [ERROR] [$section] Invalid policy entry '$setting' (expected Key=Value)"
+            echo "$(/bin/date) | [ERROR] [$section] Invalid policy entry '$setting' (expected Key=Value or !Key)"
             return 1
         fi
 
